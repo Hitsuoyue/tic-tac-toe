@@ -4,33 +4,23 @@ class Square extends Component{
     constructor(props){
         super(props);
         this.state = {
-            value: ''
         }
     }
 
     putValue = (e, newMaster, master) => {
-        console.log(this.props, master);
-
-        this.setState({
-            value: master
-        });
-        this.props.changeMaster(e, newMaster);
+        const { value } = this.props;
+        if(value === null){
+            this.props.changeMaster(e, this.props.index);
+        }
     }
 
     render(){
-        const { master } = this.props;
-        const { value } = this.state;
-        let newMaster = '';
-        if(master === 'A'){
-            newMaster = 'B';
-        }else{
-            newMaster = 'A';
-        }
+        const { master, value } = this.props;
+
         return(
             <button
                 className="square"
-
-                onClick={(e) => this.putValue(e, newMaster, master)}
+                onClick={this.putValue}
             >
                 {value}
             </button>
