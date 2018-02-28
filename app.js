@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
-import Game from './src/Game';
+import './src/gomoku/style/index.scss';
+import Game from './src/gomoku/Game';
 
 class APP extends Component{
     render(){
