@@ -31,6 +31,10 @@ module.exports = {
         }, {
             test: /\.scss$/,
             loader: "style-loader!css-loader!sass-loader"
+        },{
+            // 图片加载器
+            test:/\.(png|jpg|gif|jpeg)$/,
+            loader:'url-loader?limit=2048'
         }]
     }
 };

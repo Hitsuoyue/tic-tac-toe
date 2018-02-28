@@ -7,15 +7,15 @@ class Square extends Component{
         }
     }
 
-    putValue = (e, newMaster, master) => {
-        const { value } = this.props;
-        if(value === null){
+    putValue = (e) => {
+        const { value, winner } = this.props;
+        if(value === null && !winner){
             this.props.changeMaster(e, this.props.index);
         }
     }
 
     render(){
-        const { master, value } = this.props;
+        const { value } = this.props;
 
         return(
             <button
