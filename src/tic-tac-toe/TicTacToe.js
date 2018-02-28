@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Board from './Board';
 import Steps from './Steps';
+import Header from './Header';
 
 class TicTacToe extends Component{
     constructor(props){
@@ -20,8 +21,6 @@ class TicTacToe extends Component{
 
     /**
      * 下棋触发
-     * @param e
-     * @param index
      */
     changeMaster = (e, index) => {
         const { master } = this.state;
@@ -51,10 +50,11 @@ class TicTacToe extends Component{
         });
     };
 
+    /**
+     * 点击步骤按钮后，跳转到对应的棋盘格状态
+     */
     onStepClick = (e, data) => {
         const { master, squares } = data;
-        console.log('squares', squares, data);
-
         this.setState({
             squares: squares,
             master: master
@@ -88,6 +88,9 @@ class TicTacToe extends Component{
         return winner;
     }
 
+    /**
+     * 重新开始一把游戏
+     */
     refreshGame = () => {
         this.squaresA = [];
         this.squaresB = [];
@@ -104,24 +107,19 @@ class TicTacToe extends Component{
 
     render(){
         const { master, squares, winner, history } = this.state;
-        let status = winner ? `Winner is: ${winner}` : `Next Player: ${master}` ;
-
         return(
             <div className='game'>
-                <div className='title'>
-                    {status}
-                    <button
-                        className='again'
-                        onClick={this.refreshGame}
-                    />
-                </div>
-
+                <Header
+                    winner={winner}
+                    master={master}
+                    refreshGame={this.refreshGame}
+                />
                 <Board
                     changeMaster={this.changeMaster}
                     master={master}
                     squares={squares}
                     winner={winner}
-                    />
+                />
                 <Steps
                     history={history}
                     onStepClick={this.onStepClick}

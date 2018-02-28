@@ -2,13 +2,6 @@ import React, {Component} from 'react';
 import Square from './Square';
 
 class Board extends Component{
-
-    constructor(props){
-        super(props);
-        this.state = {
-        }
-    }
-
     /**
      * 渲染面板上的 square
      * @returns {Array}

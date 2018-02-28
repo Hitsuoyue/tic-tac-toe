@@ -3,12 +3,6 @@ import Step from './Step';
 
 class Steps extends Component{
 
-    constructor(props){
-        super(props);
-        this.state = {
-        }
-    }
-
     /**
      * 渲染步骤
      * @returns {*}

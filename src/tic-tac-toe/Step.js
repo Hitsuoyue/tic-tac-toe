@@ -1,13 +1,6 @@
 import React, {Component} from 'react';
-import Square from './Square';
 
 class Step extends Component{
-
-    constructor(props){
-        super(props);
-        this.state = {
-        }
-    }
 
     render(){
         const { data } = this.props;
