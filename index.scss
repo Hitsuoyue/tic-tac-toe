@@ -1,3 +1,59 @@
+.type-change{
+  text-align: center;
+  margin-top: 30px;
+  font-size: 16px;
+}
+.game-5{
+  width: 700px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -190px;
+  margin-left: -250px;
+  .title-5{
+    height: 80px;
+    line-height: 80px;
+    font-size: 30px;
+    text-indent: 50px;
+    .again-5{
+      width: 30px;
+      height: 32px;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 80px;
+      vertical-align: middle;
+      background: url("src/image/refresh.png")no-repeat 0 0/30px 30px;
+    }
+    .back-5{
+      width: 30px;
+      height: 32px;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 80px;
+      vertical-align: middle;
+      background: url("src/image/back.png")no-repeat 0 0/30px 30px;
+    }
+  }
+  .board-5{
+    width: 500px;
+    border: 1px solid #ccc;
+    font-size: 0;
+    float: left;
+    .square-5{
+      width: 50px;
+      height: 50px;
+      line-height: 60px;
+      background: transparent;
+      border: 1px solid #ccc;
+      outline: none;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+  }
+}
 .game{
   width: 500px;
   height: 300px;
@@ -19,7 +75,7 @@
       cursor: pointer;
       margin-left: 100px;
       vertical-align: middle;
-      background: url("./src/style/refresh.png")no-repeat 0 0/30px 30px;
+      background: url("src/image/refresh.png")no-repeat 0 0/30px 30px;
     }
   }
   .board{

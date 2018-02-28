@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import Board5 from './Board5';
+import Board from './Board';
 import Steps from './Steps';
 
-class Game5 extends Component{
+class TicTacToe extends Component{
     constructor(props){
         super(props);
         this.state = {
             master: 'A',
-            squares: Array(100).fill(null),
+            squares: Array(9).fill(null),
             winner: '',
             history:[{
                 master: 'A',
@@ -116,7 +116,7 @@ class Game5 extends Component{
                     />
                 </div>
 
-                <Board5
+                <Board
                     changeMaster={this.changeMaster}
                     master={master}
                     squares={squares}
@@ -131,4 +131,4 @@ class Game5 extends Component{
     }
 }
 
-export default Game5;
+export default TicTacToe;

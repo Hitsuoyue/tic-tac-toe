@@ -19,7 +19,7 @@ class Square extends Component{
 
         return(
             <button
-                className="square"
+                className="square-5"
                 onClick={this.putValue}
             >
                 {value}

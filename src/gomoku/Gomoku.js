@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import Board from './Board';
-import './style/index.scss';
 
-class Game extends Component{
+class Gomoku extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -26,6 +25,7 @@ class Game extends Component{
      */
     changeMaster = (e, index) => {
         const { master,squares } = this.state;
+        console.log(master, winner, squares);
         let newSquares = Object.assign([], this.state.squares);
         let newHistory = Object.assign([], this.state.history);
         newSquares[index] = master;
@@ -168,6 +168,13 @@ class Game extends Component{
     backStep = () => {
         if(!this.state.back){
             const { master, squares } = this.state.history;
+            let masterSquares = [];
+            if(master === 'A'){
+                masterSquares = this.squaresA;
+            }else if(master === 'B'){
+                masterSquares = this.squaresB;
+            }
+            masterSquares.splice(this.squaresB.length-1, 1);
             this.setState({
                 master: master,
                 squares: squares,
@@ -186,15 +193,15 @@ class Game extends Component{
         let status = winner ? `Winner is: ${winner}` : `Next Player: ${master}` ;
 
         return(
-            <div className='game'>
-                <div className='title'>
+            <div className='game-5'>
+                <div className='title-5'>
                     {status}
                     <button
-                        className='again'
+                        className='again-5'
                         onClick={this.refreshGame}
                     />
                     <button
-                        className='back'
+                        className='back-5'
                         onClick={this.backStep}
                     />
                 </div>
@@ -210,4 +217,4 @@ class Game extends Component{
     }
 }
 
-export default Game;
+export default Gomoku;
