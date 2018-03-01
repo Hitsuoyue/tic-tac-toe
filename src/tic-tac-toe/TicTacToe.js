@@ -8,7 +8,7 @@ class TicTacToe extends Component{
         super(props);
         this.state = {
             master: 'A',
-            squares: Array(9).fill(null),
+            squares: Array(9).fill(undefined),
             winner: '',
             history:[{
                 master: 'A',
@@ -22,32 +22,35 @@ class TicTacToe extends Component{
     /**
      * 下棋触发
      */
-    changeMaster = (e, index) => {
-        const { master } = this.state;
-        let newSquares = Object.assign([], this.state.squares);
-        let newHistory = Object.assign([], this.state.history);
-        newSquares[index] = master;
-        let newMaster = '';
-        if(master === 'A'){
-            newMaster = 'B';
-            this.squaresA.push(index);
-        }else if(master === 'B'){
-            newMaster = 'A';
-            this.squaresB.push(index);
+    clickSquare = (e, value, index) => {
+        const { master, winner } = this.state;
+        if(value === undefined && !winner){
+            let newSquares = Object.assign([], this.state.squares);
+            let newHistory = Object.assign([], this.state.history);
+            newSquares[index] = master;
+            let newMaster = '';
+            if(master === 'A'){
+                newMaster = 'B';
+                this.squaresA.push(index);
+            }else if(master === 'B'){
+                newMaster = 'A';
+                this.squaresB.push(index);
+            }
+            newHistory.push({
+                master: newMaster,
+                squares: newSquares
+            });
+
+            let winner = this.calculateWinner();
+
+            this.setState({
+                master: newMaster,
+                squares: newSquares,
+                winner: winner,
+                history: newHistory
+            });
         }
-        newHistory.push({
-            master: newMaster,
-            squares: newSquares
-        });
 
-        let winner = this.calculateWinner();
-
-        this.setState({
-            master: newMaster,
-            squares: newSquares,
-            winner: winner,
-            history: newHistory
-        });
     };
 
     /**
@@ -115,7 +118,7 @@ class TicTacToe extends Component{
                     refreshGame={this.refreshGame}
                 />
                 <Board
-                    changeMaster={this.changeMaster}
+                    clickSquare={this.clickSquare}
                     master={master}
                     squares={squares}
                     winner={winner}

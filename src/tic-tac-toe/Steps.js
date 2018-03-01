@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Step from './Step';
 
 class Steps extends Component{
 
@@ -17,7 +16,12 @@ class Steps extends Component{
                 index: index
             }
             steps.push(
-                <Step key={index} data={data} onStepClick={this.props.onStepClick}/>
+                <button
+                    key={index}
+                    className='step-btn'
+                    onClick={e=>this.props.onStepClick(e, data)}>
+                    step{index}
+                </button>
             )
         })
         return steps;
